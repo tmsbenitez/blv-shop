@@ -1,15 +1,15 @@
-import Header from '../../components/Header'
-import Filters from '../../components/Filters'
-import Footer from '../../components/Footer'
-import Product from '../../models/Product'
-import dbConnect from '../../lib/dbConnect'
+import Header from '../../../components/Header'
+import Filters from '../../../components/Filters'
+import Footer from '../../../components/Footer'
+import Product from '../../../models/Product'
+import dbConnect from '../../../lib/dbConnect'
 
-const Accessories = ({ products }) => {
+const Sweatshirt = ({ products }) => {
 	return (
 		<div>
 			<Header />
 			<h1 className="pt-8 font-serif text-6xl font-bold text-center">
-				Accessories.
+				Clothing.
 			</h1>
 			<Filters products={products} />
 			<Footer />
@@ -20,9 +20,7 @@ const Accessories = ({ products }) => {
 export async function getServerSideProps() {
 	await dbConnect()
 
-	const result = await Product.find({ category: 'Accessories' }).sort({
-		subcategory: 1,
-	})
+	const result = await Product.find({ subcategory: 'Sweatshirt' })
 	const products = result.map(doc => {
 		const product = doc.toObject()
 		product._id = product._id.toString()
@@ -32,4 +30,4 @@ export async function getServerSideProps() {
 	return { props: { products: products } }
 }
 
-export default Accessories
+export default Sweatshirt

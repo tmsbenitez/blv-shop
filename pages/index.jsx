@@ -5,6 +5,7 @@ import Main from '../components/Main'
 import Services from '../components/Services'
 import NewProducts from '../components/NewProducts'
 import Head from 'next/head'
+import Footer from '../components/Footer'
 
 export default function Home({ products }) {
 	return (
@@ -16,6 +17,7 @@ export default function Home({ products }) {
 			<Main />
 			<Services />
 			<NewProducts products={products} />
+			<Footer />
 		</section>
 	)
 }

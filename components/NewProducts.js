@@ -1,29 +1,30 @@
 import Item from './Item'
 import Link from 'next/link'
 
-const NewProducts = props => {
+const Products = props => {
 	const { products } = props
 
 	return (
 		<section>
 			<div>
-				<h1 className="text-6xl font-serif text-center">New Products.</h1>
+				<h1 className="font-serif text-6xl text-center">New Products.</h1>
 			</div>
-			<div className="py-16 mx-48 grid grid-cols-3 grid-rows-2 justify-items-center gap-y-16">
+			<div className="grid grid-cols-3 grid-rows-2 py-16 mx-48 justify-items-center gap-y-16">
 				{products.map(product => (
 					<Item
 						key={product._id}
 						name={product.name}
 						category={product.category}
+						subcategory={product.subcategory}
 						price={product.price}
-						img={product.img}
-						color={product.color}
+						images={product.images}
+						colors={product.colors}
 					/>
 				))}
 			</div>
 			<div className="flex items-center justify-center pb-8">
 				<Link href="/shop">
-					<a className="text-xl bg-white border border-zinc-400 px-4 py-2 rounded-sm hover:border-zinc-600 text-zinc-600 duration-100">
+					<a className="px-4 py-2 text-xl duration-100 bg-white border rounded-sm border-zinc-400 hover:border-zinc-600 text-zinc-600">
 						See all products
 					</a>
 				</Link>
@@ -32,4 +33,4 @@ const NewProducts = props => {
 	)
 }
 
-export default NewProducts
+export default Products
