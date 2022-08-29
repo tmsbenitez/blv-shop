@@ -13,6 +13,33 @@ const colors = [
 	'indigo',
 ]
 
+const navigation = [
+	{ name: 'Shop', url: '/shop', subcategories: [] },
+	{
+		name: 'Shoes',
+		url: '/shop/shoes',
+		subcategories: [
+			{ name: 'Low', url: '/shop/shoes/low' },
+			{ name: 'High', url: '/shop/shoes/high' },
+		],
+	},
+	{
+		name: 'Clothing',
+		url: '/shop/clothing',
+		subcategories: [
+			{ name: 'T-Shirts', url: '/shop/clothing/t-shirt' },
+			{ name: 'Sweatshirts', url: '/shop/clothing/sweatshirt' },
+			{ name: 'Hoodies', url: '/shop/clothing/hoodies' },
+			{ name: 'Jogging', url: '/shop/clothing/jogging' },
+		],
+	},
+	{
+		name: 'Accessories',
+		url: '/shop/accessories',
+		subcategories: [],
+	},
+]
+
 const ProductFilters = props => {
 	const { colors, onFilterChange } = props
 
@@ -21,42 +48,23 @@ const ProductFilters = props => {
 			<div className="pb-6">
 				<h1 className="font-serif text-xl font-bold">Categories</h1>
 				<ul className="flex flex-col gap-2 px-4 py-3">
-					<Link href="/shop">
-						<a className="font-semibold">Shop</a>
-					</Link>
-					<Link href="/shop/shoes">
-						<a className="font-semibold">Shoes</a>
-					</Link>
-					<div className="flex flex-col gap-1 pl-4">
-						<Link href="/shop/shoes/low">
-							<a>Low</a>
-						</Link>
-						<Link href="/shop/shoes/high">
-							<a>High</a>
-						</Link>
-					</div>
-					<div className="flex flex-col gap-2">
-						<Link href="/shop/clothing">
-							<a className="font-semibold">Clothing</a>
-						</Link>
-						<div className="flex flex-col gap-1 pl-4">
-							<Link href="/shop/clothing/t-shirt">
-								<a>T-Shirt</a>
-							</Link>
-							<Link href="/shop/clothing/sweatshirt">
-								<a>Sweatshirt</a>
-							</Link>
-							<Link href="/shop/clothing/hoodies">
-								<a>Hoodies</a>
-							</Link>
-							<Link href="/shop/clothing/jogging">
-								<a>Jogging</a>
-							</Link>
-						</div>
-					</div>
-					<Link href="/shop/accessories">
-						<a className="font-semibold">Accessories</a>
-					</Link>
+					{navigation.map(nav => {
+						const { name, url, subcategories } = nav
+						return (
+							<div key={name}>
+								<Link href={url}>
+									<a className="font-semibold">{name}</a>
+								</Link>
+								<div className="flex flex-col gap-1 pl-4">
+									{subcategories.map(sub => (
+										<Link key={sub.name} href={sub.url}>
+											<a>{sub.name}</a>
+										</Link>
+									))}
+								</div>
+							</div>
+						)
+					})}
 				</ul>
 			</div>
 			<div className="pb-6">
@@ -121,18 +129,11 @@ const Filters = props => {
 
 				if (filters.size) {
 					products = products.filter(product => {
-						for (let i = 0; i < product.colors.length; i++) {
-							let filter = filters.has(product.colors[i])
-							let color = product.colors[i]
-
-							if (filter) {
-								return color
-							} else if (filter) {
-								return color
-							} else if (filter) {
-								return color
-							}
-						}
+						let hasColor
+						product.colors.forEach(color =>
+							filters.has(color) ? (hasColor = true) : null
+						)
+						return hasColor
 					})
 				}
 
@@ -147,7 +148,7 @@ const Filters = props => {
 	)
 
 	return (
-		<section className="flex ">
+		<section className="flex">
 			<ProductFilters colors={colors} onFilterChange={handleFilterChange} />
 			<ProductsList products={state.products} />
 		</section>

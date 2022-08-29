@@ -1,9 +1,15 @@
 import dbConnect from '../../lib/dbConnect'
 import Product from '../../models/Product'
 import Layout from '../../components/Layout'
+import Header from '../../components/Header'
 
 const Details = ({ products }) => {
-	return <Layout products={products} />
+	return (
+		<main>
+			<Header />
+			<Layout products={products} />
+		</main>
+	)
 }
 
 export async function getServerSideProps() {
