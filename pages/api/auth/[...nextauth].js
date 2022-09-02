@@ -29,6 +29,6 @@ export default NextAuth({
 		logo: '/img/logo.png', // Absolute URL to image
 		buttonText: '', // Hex color code
 	},
-	secret: process.env.NEXTAUTH_SECRET,
+	secret: process.env.NEXT_PUBLIC_SECRET,
 	adapter: MongoDBAdapter(mongodb),
 })
