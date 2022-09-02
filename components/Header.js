@@ -31,8 +31,8 @@ const Header = () => {
 					<button className="opacity-80 hover:opacity-100 duration-100">
 						Search
 					</button>
-					<Link href="/">
-						<a className="opacity-80 hover:opacity-100 duration-100">Log in</a>
+					<Link href="/account">
+						<a className="opacity-80 hover:opacity-100 duration-100">My Account</a>
 					</Link>
 				</div>
 			</nav>

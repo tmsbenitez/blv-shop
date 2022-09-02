@@ -47,17 +47,6 @@ const ItemPage = props => {
 					</h1>
 					<span className="font-semibold text-5xl">${price.toFixed(2)}</span>
 				</div>
-				<label className="flex items-center gap-4">
-					Quantity:
-					<input
-						className="border w-fit border-zinc-400 px-2 rounded-sm"
-						type="number"
-						value={quantity}
-						onChange={setQuantity}
-						min={1}
-						max={20}
-					/>
-				</label>
 				<div className="flex flex-col gap-2">
 					{colors.map(color => (
 						<label
@@ -74,10 +63,7 @@ const ItemPage = props => {
 						</label>
 					))}
 				</div>
-				<button
-					onClick={() => addToCart(props)}
-					className="px-8 mt-auto py-2 duration-100 border rounded-sm border-zinc-400 hover:border-zinc-600 text-zinc-600 hover:text-zinc-800 w-fit"
-				>
+				<button className="px-8 mt-auto py-2 duration-100 border rounded-sm border-zinc-400 hover:border-zinc-600 text-zinc-600 hover:text-zinc-800 w-fit">
 					Add to Cart
 				</button>
 			</div>
