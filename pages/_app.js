@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import { SessionProvider } from 'next-auth/react'
-import store from '../store'
+import { store } from '../redux/store'
 import { Provider } from 'react-redux'
 
 export default function MyApp({

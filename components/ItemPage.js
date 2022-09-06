@@ -1,19 +1,18 @@
 import Image from 'next/image'
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../redux/cartSlice'
 
 const ItemPage = props => {
 	const { name, subcategory, category, price, images, colors } = props
-	const { cart, addToCart, isCartVisible } = props
-
 	const [index, setIndex] = useState(0)
-	const [quantity, setQuantity] = useState(1)
-
-	console.log(props)
 
 	const changeImage = event => {
 		const btn = event.target
 		setIndex(colors.indexOf(btn.value))
 	}
+
+	const dispatch = useDispatch()
 
 	return (
 		<div className="flex mx-14 my-28 w-fit bg-white border-2 border-zinc-600 shadow-lg">
@@ -63,7 +62,10 @@ const ItemPage = props => {
 						</label>
 					))}
 				</div>
-				<button className="px-8 mt-auto py-2 duration-100 border rounded-sm border-zinc-400 hover:border-zinc-600 text-zinc-600 hover:text-zinc-800 w-fit">
+				<button
+					onClick={() => dispatch(addToCart({ name, price, images }))}
+					className="px-8 mt-auto py-2 duration-100 border rounded-sm border-zinc-400 hover:border-zinc-600 text-zinc-600 hover:text-zinc-800 w-fit"
+				>
 					Add to Cart
 				</button>
 			</div>
