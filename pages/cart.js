@@ -1,35 +1,29 @@
 import { useSelector } from 'react-redux'
 import Header from '../components/Header'
 import { getSession } from 'next-auth/react'
-import Image from 'next/image'
+import CartItem from '../components/CartItem'
+import Total from '../components/Total'
 
 const Cart = () => {
 	const cart = useSelector(state => state.cart)
 
 	return (
-		<section>
+		<section className="flex flex-col items-center">
 			<Header />
-			<main className="flex flex-col items-center">
-				<h3 className="text-6xl font-serif py-12 text-center">My Cart</h3>
-				<div className="w-6/12 flex flex-col bg-white border rounded shadow-lg">
-					{cart.map(item => {
-						const { name, images, price } = item
-						return (
-							<div key={name} className="flex gap-4">
-								<Image
-									alt={`blv-${name}`}
-									src={images[0]}
-									width={150}
-									height={150}
-								/>
-								<div>
-									<p className="text-xl">{name}</p>
-									<p className="text-2xl font-bold">${price}</p>
-								</div>
-							</div>
-						)
-					})}
+			<main className="flex flex-col items-center gap-12">
+				<h3 className="text-6xl font-serif pt-12 text-center">My Cart</h3>
+				<div className=" flex flex-col gap-2">
+					{cart?.map(item => (
+						<CartItem
+							key={item.name}
+							name={item.name}
+							image={item.images}
+							quantity={item.quantity}
+							price={item.price}
+						/>
+					))}
 				</div>
+				<Total />
 			</main>
 		</section>
 	)

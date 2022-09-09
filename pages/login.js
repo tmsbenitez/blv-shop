@@ -1,4 +1,5 @@
 import { useSession, signIn, getSession } from 'next-auth/react'
+import Link from 'next/link'
 
 const Login = () => {
 	const { data: session } = useSession()
@@ -14,6 +15,11 @@ const Login = () => {
 					>
 						Sign In
 					</button>
+					<Link href="/">
+						<a className="px-8 py-2 duration-100 border rounded-sm border-zinc-400 hover:border-zinc-600 text-zinc-600 hover:text-zinc-800">
+							Back to home
+						</a>
+					</Link>
 				</div>
 			</main>
 		)

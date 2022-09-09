@@ -2,11 +2,14 @@ import React from 'react'
 import { useSession, signOut, getSession } from 'next-auth/react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { persistor } from '../redux/store'
 
 const Account = () => {
 	const { data: session, status } = useSession()
 
-	console.log(session)
+	const purge = () => {
+		persistor.purge()
+	}
 
 	if (status === 'authenticated') {
 		return (
@@ -33,7 +36,10 @@ const Account = () => {
 							</a>
 						</Link>
 						<button
-							onClick={signOut}
+							onClick={() => {
+								purge()
+								signOut()
+							}}
 							className="px-8 py-2 duration-100 border rounded-sm border-zinc-400 hover:border-zinc-600 text-zinc-600 hover:text-zinc-800"
 						>
 							Sign out
