@@ -19,7 +19,7 @@ const Layout = props => {
 					viewBox="0 0 24 24"
 					strokeWidth="1.5"
 					stroke="currentColor"
-					className="w-8 h-8 mt-8 ml-14"
+					className="w-8 h-8 mt-8 ml-6 lg:ml-14"
 				>
 					<path
 						strokeLinecap="round"

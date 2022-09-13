@@ -9,7 +9,7 @@ const Products = props => {
 			<div>
 				<h1 className="font-serif text-5xl text-center">New Products.</h1>
 			</div>
-			<div className="flex flex-wrap gap-12 justify-center py-16 lg:w-4/6 items-center gap-y-16">
+			<div className="flex flex-wrap gap-12 justify-center py-16 w-full lg:w-4/6 items-center gap-y-16">
 				{products.map(product => (
 					<Item
 						key={product._id}

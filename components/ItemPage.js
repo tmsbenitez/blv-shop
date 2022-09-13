@@ -27,14 +27,10 @@ const ItemPage = props => {
 		const session = await getSession()
 		if (!session) {
 			setSigned(true)
-			setTimeout(() => {
-				setSigned(false)
-			}, 5000)
+			setTimeout(() => setSigned(false), 5000)
 		} else if (currColor === null) {
 			setIsColor(true)
-			setTimeout(() => {
-				setIsColor(false)
-			}, 5000)
+			setTimeout(() => setIsColor(false), 5000)
 		} else {
 			dispatch(
 				addToCart({ name, price, images, color: currColor, index, trueId })
@@ -42,38 +38,23 @@ const ItemPage = props => {
 			setSigned(false)
 			setIsColor(false)
 			setAdded(true)
-			setTimeout(() => {
-				setAdded(false)
-			}, 3000)
+			setTimeout(() => setAdded(false), 3000)
 		}
 	}
 
 	return (
-		<div className="flex mx-14 my-16 w-fit bg-white border-2 border-zinc-300 shadow-lg pr-48">
+		<div className="flex flex-col lg:flex-row mx-6 lg:mx-14 my-16 w-fit bg-white border-2 border-zinc-300 shadow-lg w-full lg:pr-48">
 			<picture className="flex rounded">
-				{images.length > 1 ? (
-					<Image
-						key={images}
-						alt={`blv-${name}`}
-						src={images[index]}
-						width="520"
-						height="520"
-						className="object-cover"
-					/>
-				) : (
-					images.map(image => (
-						<Image
-							key={image}
-							alt={`blv-${name}`}
-							src={image}
-							width="520"
-							height="520"
-							className="object-cover"
-						/>
-					))
-				)}
+				<Image
+					key={images}
+					alt={`blv-${name}`}
+					src={images.length > 1 ? images[index] : images[0]}
+					width="520"
+					height="520"
+					className="object-cover"
+				/>
 			</picture>
-			<div className="flex flex-col gap-8 py-12 pl-12 ">
+			<div className="flex flex-col gap-8 py-12 pl-6 lg:pl-12 ">
 				<div className="flex flex-col gap-8">
 					<h1 className="font-semibold text-3xl">
 						{name} / {subcategory}
@@ -81,43 +62,43 @@ const ItemPage = props => {
 					<span className="font-semibold text-5xl">${price.toFixed(2)}</span>
 				</div>
 				<div className="flex flex-col gap-2">
-					<span className="text-lg font-semibold">
-						Choose a color: {currColor}
-					</span>
-					{colors.map(color => (
-						<label
-							key={color}
-							className="flex gap-2 hover:bg-zinc-100  duration-100 p-2 w-fit rounded cursor-pointer"
-							id="color-label"
-						>
-							<button
-								value={color}
-								onClick={changeImage}
-								style={{ backgroundColor: color }}
-								className="w-6 h-6 border-black border rounded-sm"
-							></button>
-							{color.charAt(0).toUpperCase() + color.slice(1)}
-						</label>
-					))}
+					<div>
+						<span className="text-lg font-semibold">
+							Choose a color: {currColor}
+						</span>
+					</div>
+					<div className='flex lg:flex-col'>
+						{colors.map(color => (
+							<label
+								key={color}
+								className="flex gap-2 hover:bg-zinc-100  duration-100 p-2 w-fit rounded cursor-pointer"
+								id="color-label"
+							>
+								<button
+									value={color}
+									onClick={changeImage}
+									style={{ backgroundColor: color }}
+									className="w-6 h-6 border-black border rounded-sm"
+								></button>
+								{color.charAt(0).toUpperCase() + color.slice(1)}
+							</label>
+						))}
+					</div>
 				</div>
 				<div className="relative mt-auto flex flex-col gap-3">
-					{signed ? (
-						<span className="text-red-400">
-							Please{' '}
-							<Link href="/login">
-								<a className="underline">sign in</a>
-							</Link>{' '}
-							to add products to your cart.
-						</span>
-					) : null}
-					{isColor ? (
-						<span className="text-red-400">
-							Please, choose a color to add products to your cart.
-						</span>
-					) : null}
-					{added ? (
-						<span className="text-green-400">Added to cart!</span>
-					) : null}
+					<span className={`text-red-400 ${signed ? 'block' : 'hidden'}`}>
+						Please{' '}
+						<Link href="/login">
+							<a className="underline">sign in</a>
+						</Link>{' '}
+						to add products to your cart.
+					</span>
+					<span className={`text-red-400 ${isColor ? 'block' : 'hidden'}`}>
+						Please, choose a color to add products to your cart.
+					</span>
+					<span className={`text-green-400 ${added ? 'block' : 'hidden'}`}>
+						Added to cart!
+					</span>
 					<button
 						onClick={() => addBtn()}
 						className="px-8  py-2 duration-100 border rounded-sm border-zinc-400 hover:border-zinc-600 text-zinc-600 hover:text-zinc-800 w-fit"

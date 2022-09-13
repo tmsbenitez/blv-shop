@@ -13,25 +13,14 @@ const Item = props => {
 
 	return (
 		<div className="flex flex-col items-center pb-6 text-center bg-white border-2 rounded shadow-lg border-zinc-300">
-			{images.length > 1 ? (
-				<Image
-					key={images}
-					alt={`blv-${name}`}
-					src={images[index]}
-					width="320"
-					height="320"
-					className="object-cover"
-				/>
-			) : (
-				<Image
-					key={images}
-					alt={`blv-${name}`}
-					src={images[0]}
-					width="320"
-					height="320"
-					className="object-cover"
-				/>
-			)}
+			<Image
+				key={images}
+				alt={`blv-${name}`}
+				src={images.length > 1 ? images[index] : images[0]}
+				width="330"
+				height="330"
+				className="object-cover"
+			/>
 			<div className="flex flex-col flex-wrap items-center gap-2 py-4">
 				<h3 className="max-w-xs text-md">
 					{name} / {subcategory}

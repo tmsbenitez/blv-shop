@@ -62,7 +62,7 @@ const Footer = () => {
 						these are the real shops.
 					</p>
 				</div>
-				<div className="grid grid-cols-2">
+				<div className="flex flex-wrap gap-x-4 gap-y-2">
 					{websites.map(website => (
 						<Link href={website.url} key={website.title}>
 							<a>▹ {website.title}</a>

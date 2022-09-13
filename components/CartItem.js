@@ -13,7 +13,7 @@ const CartItem = ({ name, image, price, quantity, color, index = 0, id }) => {
 	return (
 		<section
 			key={name}
-			className="flex gap-4 border border-zinc-300 bg-white rounded pr-96"
+			className="flex gap-4 border border-zinc-300 bg-white rounded w-full"
 		>
 			<Image
 				alt={`blv-${name}`}
@@ -22,15 +22,15 @@ const CartItem = ({ name, image, price, quantity, color, index = 0, id }) => {
 				height={150}
 				className="object-cover"
 			/>
-			<div className="flex flex-col items-start justify-center gap-4">
+			<div className="flex pr-6 flex-col items-start justify-center gap-2 lg:gap-4">
 				<Link href={`/shop/${name}`}>
-					<div className="flex gap-2 font-semibold text-lg cursor-pointer">
+					<div className="flex gap-1 font-semibold cursor-pointer">
 						<p>{name}</p>
 						{'-'}
 						<p>${price}</p>
 					</div>
 				</Link>
-				<div className="flex gap-4">
+				<div className="flex gap-4 text-sm">
 					<p>Color: {color.charAt(0).toUpperCase() + color.slice(1)}</p>
 					<p>Quantity: {quantity}</p>
 				</div>

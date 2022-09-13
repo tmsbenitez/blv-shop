@@ -10,10 +10,10 @@ const Cart = () => {
 	return (
 		<section className="flex flex-col">
 			<Header />
-			<main className="flex flex-col items-center gap-12">
+			<main className="flex flex-col items-center gap-12 mx-6 lg:mx-14">
 				<h3 className="text-6xl font-serif pt-12 text-center">My Cart</h3>
 				{cart.length !== 0 ? (
-					<div className=" flex flex-col gap-2 overflow-y-scroll h-[30rem] w-clip">
+					<div className="flex flex-col gap-2 overflow-y-scroll h-[30rem] w-full">
 						{cart?.map(item => (
 							<CartItem
 								key={item.name + item.color}

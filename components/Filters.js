@@ -44,46 +44,48 @@ const ProductFilters = props => {
 	const { colors, onFilterChange } = props
 
 	return (
-		<aside className="justify-center flex lg:flex-col h-fit gap-8 lg:gap-0 py-8 px-6 bg-white border rounded shadow-lg mx-14 my-14 border-zinc-300">
-			<div className="w-44">
-				<h1 className="font-serif text-xl font-bold">Categories</h1>
-				<ul className="flex flex-col gap-2 py-3">
-					{navigation.map(nav => {
-						const { name, url, subcategories } = nav
-						return (
-							<div key={name}>
-								<Link href={url}>
-									<a className="font-semibold">{name}</a>
-								</Link>
-								<div className="flex flex-col gap-1 pl-4">
-									{subcategories.map(sub => (
-										<Link key={sub.name} href={sub.url}>
-											<a>{sub.name}</a>
-										</Link>
-									))}
+		<aside className="justify-center flex-col flex lg:flex-col h-fit gap-8 lg:gap-0 py-8 px-6 bg-white border rounded shadow-lg m-6 lg:m-14 border-zinc-300">
+			<div className="flex lg:flex-col">
+				<div className="w-44">
+					<h1 className="font-serif text-xl font-bold">Categories</h1>
+					<ul className="flex flex-col gap-2 py-3">
+						{navigation.map(nav => {
+							const { name, url, subcategories } = nav
+							return (
+								<div key={name}>
+									<Link href={url}>
+										<a className="font-semibold">{name}</a>
+									</Link>
+									<div className="flex flex-col gap-1 pl-4">
+										{subcategories.map(sub => (
+											<Link key={sub.name} href={sub.url}>
+												<a>{sub.name}</a>
+											</Link>
+										))}
+									</div>
 								</div>
-							</div>
-						)
-					})}
-				</ul>
-			</div>
-			<div className='flex flex-col w-44'>
-				<h1 className="font-serif text-xl font-bold">Colors</h1>
-				<ul className="flex flex-col gap-2 py-3">
-					{colors.map(color => (
-						<li key={color}>
-							<label>
-								<input
-									className="mr-2"
-									onChange={onFilterChange}
-									type="checkbox"
-									value={color}
-								/>
-								{color.charAt(0).toUpperCase() + color.slice(1)}
-							</label>
-						</li>
-					))}
-				</ul>
+							)
+						})}
+					</ul>
+				</div>
+				<div className="flex flex-col w-44">
+					<h1 className="font-serif text-xl font-bold">Colors</h1>
+					<ul className="flex flex-col gap-2 py-3">
+						{colors.map(color => (
+							<li key={color}>
+								<label>
+									<input
+										className="mr-2"
+										onChange={onFilterChange}
+										type="checkbox"
+										value={color}
+									/>
+									{color.charAt(0).toUpperCase() + color.slice(1)}
+								</label>
+							</li>
+						))}
+					</ul>
+				</div>
 			</div>
 		</aside>
 	)
@@ -93,7 +95,7 @@ export const ProductsList = props => {
 	const { products } = props
 
 	return (
-		<section className="flex flex-wrap h-full gap-16 pb-48 mx-14 lg:m-0 py-14 justify-items-center">
+		<section className="flex flex-wrap justify-center lg:justify-start h-full gap-10 mx-6 lg:mx-0 lg:mx-14 lg:m-0 py-14">
 			{products.map(product => (
 				<Item
 					key={product._id}
