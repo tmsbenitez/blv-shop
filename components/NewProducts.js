@@ -5,11 +5,11 @@ const Products = props => {
 	const { products } = props
 
 	return (
-		<section>
+		<section className='flex flex-col items-center'>
 			<div>
-				<h1 className="font-serif text-6xl text-center">New Products.</h1>
+				<h1 className="font-serif text-5xl text-center">New Products.</h1>
 			</div>
-			<div className="grid grid-cols-3 grid-rows-2 py-16 mx-48 justify-items-center gap-y-16">
+			<div className="flex flex-wrap gap-12 justify-center py-16 lg:w-4/6 items-center gap-y-16">
 				{products.map(product => (
 					<Item
 						key={product._id}

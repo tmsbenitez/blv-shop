@@ -8,7 +8,7 @@ const Accessories = ({ products }) => {
 	return (
 		<div>
 			<Header />
-			<h1 className="pt-8 font-serif text-6xl font-bold text-center">
+			<h1 className="pt-8 font-serif text-6xl text-center">
 				Accessories.
 			</h1>
 			<Filters products={products} />

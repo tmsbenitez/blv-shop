@@ -8,7 +8,7 @@ const Shoes = ({ products }) => {
 	return (
 		<div>
 			<Header />
-			<h1 className="pt-8 font-serif text-6xl font-bold text-center">Shoes.</h1>
+			<h1 className="pt-8 font-serif text-6xl text-center">Shoes.</h1>
 			<Filters products={products} />
 			<Footer />
 		</div>

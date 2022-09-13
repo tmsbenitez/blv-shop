@@ -6,12 +6,12 @@ import dbConnect from '../lib/dbConnect'
 
 const Shop = ({ products }) => {
 	return (
-		<div>
+		<main>
 			<Header />
-			<h1 className="pt-8 font-serif text-6xl font-bold text-center">Shop.</h1>
+			<h1 className="pt-8 font-serif text-6xl text-center">Shop.</h1>
 			<Filters products={products} />
 			<Footer />
-		</div>
+		</main>
 	)
 }
 

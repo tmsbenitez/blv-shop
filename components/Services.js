@@ -1,6 +1,6 @@
 const Services = () => {
 	return (
-		<div className="flex justify-center gap-16 py-24">
+		<div className="flex flex-col items-center md:flex-row justify-center gap-12 md:py-24 py-16">
 			<div className="flex items-center gap-4">
 				<div>
 					<svg

@@ -44,10 +44,10 @@ const ProductFilters = props => {
 	const { colors, onFilterChange } = props
 
 	return (
-		<aside className="flex flex-col h-full py-8 pl-6 pr-12 bg-white border rounded shadow-lg ml-14 my-14 border-zinc-300">
-			<div className="pb-6">
+		<aside className="justify-center flex lg:flex-col h-fit gap-8 lg:gap-0 py-8 px-6 bg-white border rounded shadow-lg mx-14 my-14 border-zinc-300">
+			<div className="w-44">
 				<h1 className="font-serif text-xl font-bold">Categories</h1>
-				<ul className="flex flex-col gap-2 px-4 py-3">
+				<ul className="flex flex-col gap-2 py-3">
 					{navigation.map(nav => {
 						const { name, url, subcategories } = nav
 						return (
@@ -67,9 +67,9 @@ const ProductFilters = props => {
 					})}
 				</ul>
 			</div>
-			<div className="pb-6">
+			<div className='flex flex-col w-44'>
 				<h1 className="font-serif text-xl font-bold">Colors</h1>
-				<ul className="flex flex-col gap-2 px-4 py-3">
+				<ul className="flex flex-col gap-2 py-3">
 					{colors.map(color => (
 						<li key={color}>
 							<label>
@@ -93,7 +93,7 @@ export const ProductsList = props => {
 	const { products } = props
 
 	return (
-		<section className="grid h-full grid-cols-4 gap-16 pb-48 mx-12 py-14 justify-items-center">
+		<section className="flex flex-wrap h-full gap-16 pb-48 mx-14 lg:m-0 py-14 justify-items-center">
 			{products.map(product => (
 				<Item
 					key={product._id}
@@ -148,7 +148,7 @@ const Filters = props => {
 	)
 
 	return (
-		<section className="flex">
+		<section className="flex flex-col lg:flex-row">
 			<ProductFilters colors={colors} onFilterChange={handleFilterChange} />
 			<ProductsList products={state.products} />
 		</section>
