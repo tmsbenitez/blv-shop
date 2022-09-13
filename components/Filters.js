@@ -37,7 +37,7 @@ const navigation = [
 	{
 		name: 'Accessories',
 		url: '/shop/accessories',
-		subcategories: [],
+		subcategories: [{ name: 'Cap', url: '/shop/accessories/cap' }],
 	},
 ]
 
@@ -96,7 +96,7 @@ export const ProductsList = props => {
 	const { products } = props
 
 	return (
-		<section className="flex flex-wrap justify-center lg:justify-start h-full gap-10 mx-6 lg:mx-0 lg:mx-14 lg:m-0 py-14">
+		<section className="flex flex-wrap justify-center lg:justify-start h-full gap-10 mx-6 lg:mx-0 lg:m-0 py-14">
 			{products.map(product => (
 				<Item
 					key={product._id}
