@@ -9,6 +9,7 @@ const colors = [
 	'beige',
 	'green',
 	'olivedrab',
+	'lightblue',
 	'pink',
 	'indigo',
 ]
