@@ -19,8 +19,8 @@ const services = [
 const Services = () => {
 	return (
 		<div className="flex flex-wrap items-center justify-center gap-12 md:py-24 py-16">
-			{services.map(service => (
-				<div className="flex gap-4" key={service.title}>
+			{services.map(({ title, d, text }) => (
+				<div className="flex gap-4" key={title}>
 					<div>
 						<svg
 							className="w-12 h-12"
@@ -33,13 +33,13 @@ const Services = () => {
 								strokeLinecap="round"
 								strokeLinejoin="round"
 								strokeWidth="1.5"
-								d={service.d}
+								d={d}
 							></path>
 						</svg>
 					</div>
 					<div>
-						<h2 className="font-bold">{service.title}</h2>
-						<p>{service.text}</p>
+						<h2 className="font-bold">{title}</h2>
+						<p>{text}</p>
 					</div>
 				</div>
 			))}
